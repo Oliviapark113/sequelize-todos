@@ -27,7 +27,19 @@ router.post('/api/todos', async (req, res)=>{
 
 })
 
-// router.put()
+router.put('/api/todos/:id',async(req, res) =>{
+    try{
+    const id = req.params.id
+    await db.Todo.update(req.body, {
+        where:{ id }
+    })
+
+
+    }catch(err){
+        res.status(500).send(err) 
+    }
+
+})
 
 router.delete('/api/todos/:id',async (req, res)=>{
     try{
