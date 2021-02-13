@@ -112,6 +112,16 @@ const deleteTodo = id =>{
     }
   })
 
+  todoListSpan.addEventListener('blur', e=>{
+    console.log('blur')
+   if(e.target.matches('input')){
+    const span = e.target.previousElementSibling
+    e.target.value = span.innerText
+    span.style.display = "block"
+    e.target.style.display = "none" 
+   }
+  },true)
+
   getTodos()
   //input 
   //form?
