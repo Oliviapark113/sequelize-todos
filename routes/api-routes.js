@@ -4,10 +4,13 @@ const router = express.Router()
 
 // router.get()
 
-// router.post()
+router.post('/api/todos', (req, res)=>{
+    console.log(req.body)
+    res.end()
+})
 
 // router.put()
 
 // router.delete()
 
-modules.exports = router
+module.exports = router 
