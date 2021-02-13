@@ -30,12 +30,16 @@ const renderTodoList = todos => {
 
       
     }).join('')
-
-    console.log(todosHTML)
     
     todoListSpan.innerHTML = todosHTML
 
 
+}
+
+const deleteTodo = id =>{
+  fetch(`/api/todos/${id}`, {
+    method: 'DELETE'
+  }).then(getTodos).catch(err=>console.error(err))
 }
 
   form.addEventListener('submit', e=>{
@@ -55,6 +59,15 @@ const renderTodoList = todos => {
   .then(getTodos).catch(err=>console.error(err))
 
 
+  })
+
+  todoListSpan.addEventListener('click',e => {
+      const target = e.target
+      const id = target.getAttribute('data-id')
+      if(target.matches('.delete')){
+           deleteTodo(id)
+      }
+   
   })
 
   getTodos()
